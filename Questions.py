@@ -124,7 +124,7 @@ def day2_part_1_and_2_2020():
     print(valid)
 
 
-day2_part_1_and_2_2020()
+#day2_part_1_and_2_2020()
 
 
 def day2019():
@@ -181,4 +181,4 @@ def lol():
     time.sleep(5)
     driver.find_element(By.XPATH, '/html/body/ytd-app/ytd-consent-bump-v2-lightbox/tp-yt-paper-dialog/div[4]/div[2]/div[5]/div[2]/ytd-button-renderer[2]/a/tp-yt-paper-button/yt-formatted-string').click()
 
-#lol()
+lol()
