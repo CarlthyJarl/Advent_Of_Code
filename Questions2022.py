@@ -37,7 +37,7 @@ def day_2():
         #print(i, v)
         pass
 
-# For my sanety 
+# For my sanety lol
 # ---------------------------------------------
 # LEFT VS RIGHT | OUT | RIGHT + OUTCOME = TOTAL
 # ---------------------------------------------
