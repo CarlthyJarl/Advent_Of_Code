@@ -1,3 +1,7 @@
+from string import ascii_letters
+import numpy as np
+
+
 def get_file(file):
     lines = [] 
     with open(file, "r", encoding="utf8") as f:
@@ -6,6 +10,26 @@ def get_file(file):
             #line = int(line)
             lines.append(line)
         return lines
+
+def get_file2(file):
+    with open(file) as f:
+        return [i for i in f.read().strip().split("\n")]
+
+def get_file3(file):
+    with open(file, "r") as fin:
+        return fin.read().strip().split()
+
+def how_to_letters():
+    for num, letter in enumerate(ascii_letters):
+        print(num, letter)
+        
+
+def splitstring(value):
+    string1, string2 = value[:len(value)//2], value[len(value)//2:]
+    return string1, string2
+    # mystring = 'SplitWords'
+    # print('My string',mystring)
+    # print('Split the string into two:',splitstring(mystring))
 
 def day_1():
     lines, list_of_stuf, num, = [], [], 0
@@ -28,6 +52,7 @@ def day_1():
         print(list_of_stuf[-1] + list_of_stuf[-2] + list_of_stuf[-3])
 
 #day_1()
+
 
 def day_2():
     rounds = get_file("2022_day2.txt")
@@ -78,4 +103,89 @@ def day_2():
     print("Answers part 1:", total_points_p2)
 
 
-day_2()
+#day_2()
+
+def day_3():
+    input = get_file2("2022_day3.txt")
+
+    # new_list = []
+    # for i in input:
+    #     words = splitstring(i)
+    #     new_list.append(words[0])
+    #     new_list.append(words[1])
+
+    # for j in new_list:
+    #     for l in range(0, len(new_list[j])):
+    #         print(l)
+
+    tot = 0
+    for i in input:
+        # Halvans längd
+        half = len(i)//2
+
+        left = set(i[:half])
+        right = set(i[half:])
+
+        #print(i, left, right)
+
+        for num, letter in enumerate(ascii_letters):
+            if letter in left and letter in right:
+                tot += num + 1
+
+    print(tot)
+
+
+    num2 = 3
+    tot = 0
+    for i in range(0, len(input), 3):
+        list_of_3 = input[i:num2]
+        num2 += 3
+
+        #print(list_of_3)
+
+        for num, letter in enumerate(ascii_letters):
+            if letter in list_of_3[0] and letter in list_of_3[1] and letter in list_of_3[2]: # ksk kan göra en for loop
+                tot += num + 1
+
+    print(tot)
+
+#day_3()
+
+
+def day_4():
+    pass
+
+def day_8():
+    trees = get_file2("2022_day8.txt")
+
+    #print(trees)
+
+    grid = [list(map(int, list(trees))) for tree in trees]
+    #print(grid)
+
+    lenth_n = len(grid)
+    lenth_m = len(grid[0])
+
+    grid = np.array(grid) #vene vad denna gör tbh 
+    #print(grid)
+
+    visible_trees = 0
+    for i in range(lenth_n):
+        for j in range(lenth_m):
+            hight = grid[i ,j]
+
+            if j == 0 or np.amax(grid[i, :j]) < hight:
+                visible_trees += 1
+            elif j == lenth_m - 1 or np.amax(grid[i, (j+1):]) < hight:
+                visible_trees += 1
+            elif i == 0 or np.amax(grid[:i, j]) < hight:
+                visible_trees += 1
+            elif i == lenth_n - 1 or np.amax(grid[(i+1):, j]) < hight:
+                visible_trees += 1
+
+    #print(visible_trees)
+    # no workig :(
+
+
+day_8()
+

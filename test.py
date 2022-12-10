@@ -44,4 +44,18 @@ def test5_main():
     logging.basicConfig(level=level, format=fmt)
     test5()
     
-test5_main()
+#test5_main()
+
+def splitstring(value):
+    string1, string2 = value[:len(value)//2], value[len(value)//2:]
+    return string1, string2
+
+def test_split_funk():
+    mystring = 'SplitWords'
+    print('My string',mystring)
+    #print('Split the string into two:',splitstring(mystring))
+    words = splitstring(mystring)
+    print(words[0])
+    print(words[1])
+    
+#test_split_funk()
